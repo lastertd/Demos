@@ -6,4 +6,10 @@ export default defineNuxtConfig({
   modules: [
     "@nuxtjs/tailwindcss",
   ],
+  ssr:true,
+  nitro: {
+    output: {
+      publicDir: "dist"
+    }
+  }
 });
