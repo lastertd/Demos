@@ -1,0 +1,115 @@
+@mixin ripple {
+  overflow: hidden;
+  position: relative;
+  transition: background-color .3s linear, border .3s linear;
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, #000 10%, rgba(0, 0, 0, 0) 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10);
+    opacity: 0;
+    transition: transform .5s, opacity 1s;
+  }
+
+  &:active:after {
+    transform: scale(0);
+    opacity: .2;
+    transition: 0s;
+  }
+}
+
+@mixin gap($gap:0px, $position: row) {
+
+  @if ($position == row) {
+    & > * {
+      margin-right: $gap;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+
+  } @else if ($position == col) {
+    & > * {
+      margin-bottom: $gap;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+@mixin flex($position:row, $gap:0px, $justify:center, $align:center ) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+
+  @if ($position == row) {
+    flex-direction: $position;
+
+  } @else if ($position == col) {
+    flex-direction: column;
+  }
+
+  @include gap($gap, $position);
+
+}
+
+@mixin frosted{
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow:inset 0 0 7px rgba(255, 255, 255, 0.15);
+}
+
+@mixin gap($gap:0px, $position: row) {
+  @if ($position == row) {
+    & > * {
+      margin-right: $gap;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  } @else if ($position == col) {
+    & > * {
+      margin-bottom: $gap;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+@mixin flex($position:row, $gap:0px, $justify:center, $align:center ) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+
+  @if ($position == row) {
+    flex-direction: $position;
+
+  } @else if ($position == col) {
+    flex-direction: column;
+  }
+
+  @include gap($gap, $position);
+}
+
+@mixin truncated{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+}
