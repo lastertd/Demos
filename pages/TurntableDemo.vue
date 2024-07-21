@@ -23,6 +23,9 @@
 </template>
 
 <script setup lang="ts">
+definePageMeta({
+  name: "大转盘效果演示",
+});
 
 interface TurntableConfig {
   /* 修正角度，由于轮盘背景由图片决定, 需要适当修正奖项的默认角度 */
